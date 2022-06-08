@@ -1,23 +1,18 @@
 package com.alkemy.challengeandroid.ui.view
 
-import android.app.Activity
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alkemy.challengeandroid.R
 import com.alkemy.challengeandroid.core.RetrofitHelper
 import com.alkemy.challengeandroid.data.model.PopularMovies
 import com.alkemy.challengeandroid.data.network.PopularMovieAPI
 import com.alkemy.challengeandroid.databinding.ActivityMainBinding
-import com.alkemy.challengeandroid.databinding.PosterBinding
 import com.alkemy.challengeandroid.ui.viewmodel.PopularMoviesAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,4 +56,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
 
