@@ -1,7 +1,11 @@
 package com.alkemy.challengeandroid.ui.view
 
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import com.alkemy.challengeandroid.core.RetrofitHelper
 import com.alkemy.challengeandroid.data.model.DetailedMovie
@@ -15,7 +19,6 @@ import kotlinx.coroutines.launch
 class Detail () : AppCompatActivity() {
 
      private lateinit var binding: ActivityDetailBinding
-     //private lateinit var adapter : DetailedMovieAdapter
      private var movieData = DetailedMovie(id = 0, title = "", overview = "", posterPath = "",
         language = "", releaseDate = "0000-00-00", voteAverage = 0.0)
      private var id : Int = 0
@@ -26,8 +29,19 @@ class Detail () : AppCompatActivity() {
         setContentView(binding.root)
         id = intent.getIntExtra("id", 0)
         initComponents()
-        getDetail()
+        checkConnection()
 
+    }
+    private fun checkConnection() {
+        val conManager : ConnectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo : NetworkInfo? = conManager.activeNetworkInfo
+        val isConnected : Boolean = netInfo?.isConnectedOrConnecting == true
+        if(!isConnected) {
+            Toast.makeText(this, "No internet connection, please verify your connection and try again",
+                Toast.LENGTH_LONG).show()
+            exitApp()
+        }else
+            getDetail()
     }
 
     private fun initComponents() {
@@ -69,6 +83,14 @@ class Detail () : AppCompatActivity() {
                 }
             }
         }
+    }
+    private fun exitApp() {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            Toast.makeText(this, "Exiting app", Toast.LENGTH_SHORT).show()
+            finish()
+        }, 5000)
+
     }
 
 
