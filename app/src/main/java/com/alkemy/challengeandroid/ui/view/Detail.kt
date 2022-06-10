@@ -80,7 +80,7 @@ class Detail () : AppCompatActivity() {
                     movieData = movie!!
                     initComponents()
                 } else {
-                    Toast.makeText(this@Detail, "Ocurrio un error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Detail, "An error occurred", Toast.LENGTH_SHORT).show()
                 }
             }
         }
