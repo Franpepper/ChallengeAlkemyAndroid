@@ -39,13 +39,14 @@ class Detail () : AppCompatActivity() {
         if(!isConnected) {
             Toast.makeText(this, "No internet connection, please verify your connection and try again",
                 Toast.LENGTH_LONG).show()
-            exitApp()
+            //Back to main activity
+            backtToMainActivity()
         }else
             getDetail()
     }
 
     private fun initComponents() {
-        var poster = binding.ivMovie
+        val poster = binding.ivMovie
         Picasso.get().load("https://image.tmdb.org/t/p/original".plus(movieData.posterPath))
             .into(poster)
         binding.tvMovieTitle.text = movieData.title
@@ -84,12 +85,11 @@ class Detail () : AppCompatActivity() {
             }
         }
     }
-    private fun exitApp() {
+    private fun backtToMainActivity() {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            Toast.makeText(this, "Exiting app", Toast.LENGTH_SHORT).show()
             finish()
-        }, 5000)
+        }, 1000)
 
     }
 

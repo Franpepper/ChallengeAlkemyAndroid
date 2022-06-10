@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         if(!isConnected) {
             Toast.makeText(this, "No internet connection, please verify your connection, and try again ",
                 Toast.LENGTH_LONG).show()
-            exitApp()
+            noInternetMenu()
         }else
             getMovies()
     }
@@ -66,19 +66,39 @@ class MainActivity : AppCompatActivity() {
                     movieData.addAll(posters)
                     adapter.notifyDataSetChanged()
                 } else {
-                    Toast.makeText(this@MainActivity, "Ocurrio un error", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MainActivity, "An error occurred ", Toast.LENGTH_SHORT)
                         .show()
                 }
             }
 
         }
     }
+
+    private fun noInternetMenu(){
+        //Making the menu visible
+        binding.tvNoInternet.visibility = android.view.View.VISIBLE
+        binding.btnRetry.visibility = android.view.View.VISIBLE
+        binding.btnExit.visibility = android.view.View.VISIBLE
+
+        binding.tvNoInternet.text = "No internet connection, please verify your connection, and try again "
+        binding.btnRetry.setOnClickListener(){
+            //Making the menu invisible
+            binding.tvNoInternet.visibility = android.view.View.INVISIBLE
+            binding.btnRetry.visibility = android.view.View.INVISIBLE
+            binding.btnExit.visibility = android.view.View.INVISIBLE
+            checkConnection()
+        }
+        binding.btnExit.setOnClickListener(){
+            exitApp()
+        }
+    }
+
     private fun exitApp() {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             Toast.makeText(this, "Exiting app", Toast.LENGTH_SHORT).show()
             finish()
-        }, 5000)
+        }, 1000)
 
     }
 
