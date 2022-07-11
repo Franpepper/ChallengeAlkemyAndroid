@@ -29,6 +29,6 @@ jobs:
           committer_name: GitHub Actions
           committer_email: actions@github.com
           message: 'Add the very useful text file'
-          add: 'lint-results-debug.html --force'
-          cwd: './home/runner/work/ChallengeAlkemyAndroid/ChallengeAlkemyAndroid/app/build/reports/lint-results-debug.html'  
+          add: '/home/runner/work/ChallengeAlkemyAndroid/ChallengeAlkemyAndroid/app/build/reports/lint-results-debug.html --force'
+          cwd: 'github.com/Franpepper/ChallengeAlkemyAndroid'  
       
