@@ -26,8 +26,6 @@ jobs:
       run: ./gradlew lint
     - uses: EndBug/add-and-commit@v9
       with:
-          committer_name: GitHub Actions
-          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
           message: 'Added Lint Report'
           add: '/home/runner/work/ChallengeAlkemyAndroid/ChallengeAlkemyAndroid/app/src/lintLogs/lintResults.html --force'
           cwd: '.'   
