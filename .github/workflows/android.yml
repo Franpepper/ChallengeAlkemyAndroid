@@ -24,13 +24,11 @@ jobs:
       run: chmod +x gradlew
     - name: Gradle Lint
       run: ./gradlew lint
-    - name: Prepare lint log
-      run: mkdir -p "./home/runner/ChallengeAlkemyAndroid/ChallengeAlkemyAndroid/app/src/lintLogs" && cp "./home/runner/work/ChallengeAlkemyAndroid/ChallengeAlkemyAndroid/app/build/reports/lint-results-debug.html" "./home/runner/work/ChallengeAlkemyAndroid/ChallengeAlkemyAndroid/app/src/lintLogs/lintResults.html"    
     - uses: EndBug/add-and-commit@v9
       with:
           committer_name: GitHub Actions
           committer_email: 41898282+github-actions[bot]@users.noreply.github.com
-          message: 'Add the very useful text file'
+          message: 'Added Lint Report'
           add: '/home/runner/work/ChallengeAlkemyAndroid/ChallengeAlkemyAndroid/app/src/lintLogs/lintResults.html --force'
           cwd: '.'  
       
